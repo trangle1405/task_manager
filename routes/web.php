@@ -15,37 +15,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::prefix('customer')->group(function (){
-    route::get('index', function (){
-       return view('modules.customer.index');
-    });
+Route::prefix('customer')->group(function () {
 
-    route::get('create', function (){
-        return view('modules.customer.create');
-    });
+    Route::get('index', 'CustomerController@index');
 
-    route::post('store', function (){
+    Route::get('create', 'CustomerController@create');
 
-    });
+    Route::post('store', 'CustomerController@store');
 
-    route::get('{id}/show', function (){
-        return view('modules.customer.show');
-    });
+    Route::get('{id}/show', 'CustomerController@show');
 
-    route::get('{id}/edit', function (){
-        return view('modules.customer.edit');
+    Route::get('{id}/edit', 'CustomerController@edit');
 
-    });
+    Route::patch('{id}/update', 'CustomerController@update');
 
-    route::patch('{id}/update', function (){
+    Route::delete('{id}', 'CustomerController@destroy');
 
+});
 
-    });
+Route::prefix('tasks')->group(function () {
+   route::get('index', 'TaskController@index');
 
-    route::delete('{id}', function (){
+   route::get('create', 'TaskController@create');
 
+   route::post('store', 'TaskController$store');
 
-    });
+   route::get('{id}/show', 'TaskController@show');
 
+   route::get('{id}/edit', 'TaskController@edit');
+
+   route::put('{id}/update', 'TaskController@update');
+
+   route::delete('{id}', 'TaskController@delete');
 
 });
