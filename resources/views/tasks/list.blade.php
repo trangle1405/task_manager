@@ -29,21 +29,23 @@
                 </thead>
                 <tbody>
                 @foreach($tasks as $key => $task)
-                <tr>
-                    <th scope="row">{{ ++$key }}</th>
-                    <td>{{ $task->title }}</td>
-                    <td>{{ $task->content }}</td>
-                    <td>
-                        @if($task->image)
-                        <img src="{{ asset('storage/'.$task->image) }}" alt="" style="width: 200px; height: 200px">
-                        @else
-                            {{'Chưa có ảnh'}}
-                        @endif
-                    </td>
-                    <td>{{ $task->due_date }}</td>
-                    <td><a href="{{ route('tasks.edit', $task->id) }}">sửa</a></td>
-                    <td><a href="{{ route('tasks.destroy', $task->id) }}" class="text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">xóa</a></td>
-                </tr>
+                    <tr>
+                        <th scope="row">{{ ++$key }}</th>
+                        <td>{{ $task->title }}</td>
+                        <td>{{ $task->content }}</td>
+                        <td>
+                            @if($task->image)
+                                <img src="{{ asset('storage/'.$task->image) }}" alt=""
+                                     style="width: 200px; height: 200px">
+                            @else
+                                {{'Chưa có ảnh'}}
+                            @endif
+                        </td>
+                        <td>{{ $task->due_date }}</td>
+                        <td><a href="{{ route('tasks.edit', $task->id) }}">sửa</a></td>
+                        <td><a href="{{ route('tasks.destroy', $task->id) }}" class="text-danger"
+                               onclick="return confirm('Bạn chắc chắn muốn xóa?')">xóa</a></td>
+                    </tr>
                 @endforeach
                 </tbody>
             </table>
